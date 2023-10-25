@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
   app.use('/breads', breadsController)
 
 // MIDDLEWARE
-
+app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
@@ -26,9 +26,10 @@ app.engine('jsx', require('express-react-views').createEngine())
 app.get('*', (req, res) => {
     res.send('404')
 })
-  
-    
+
+
 // LISTEN
 app.listen(PORT, () => {
   console.log('listening on port', PORT);
 })
+
